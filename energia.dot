@@ -1,0 +1,21 @@
+digraph G {
+ graph [rankdir=LR, bgcolor="white", splines=polyline,nodesep=.52,ranksep=.78,pad=.15];
+ node [fontname="DejaVu Sans",shape=box,style="rounded,filled",fontsize=11,fillcolor="#F5F6FA",color="#526076",margin="0.18,0.12"];
+ edge [fontname="DejaVu Sans",fontsize=10,color="#586478",arrowsize=.65];
+ src [label="Fonte DC nominal\n12 V (no desenho)", fillcolor="#ECE8FA",color="#7455B7"];
+ reg [label="U2 • LM7805\n12 V → 5 V\nC1 220 nF | C2 100 nF\n≈ 2 W a 300 mA: dissipador?"];
+ vin [label="VIN / 5 V no DevKit\nRegulador da própria placa"];
+ logic [label="Lógica de 3,3 V\nESP32 e interfaces compatíveis"];
+ sensor [label="Módulos de 5 V\nse aplicável e dimensionado"];
+ driver [label="Driver de motor externo\nentrada DC 9–42 V (rótulo)\nfonte e proteções a confirmar"];
+ loads [label="Bornes RELE_1–4\ncarga entre +12 V\ne coletor comutado"];
+ gnd [label="Referência comum GND\nconforme montagem;\nverificar continuidade",fillcolor="#FCF5E6",color="#AA8852"];
+ src -> reg [label="12 V"];
+ reg -> vin [label="5 V"];
+ vin -> logic [label="3,3 V interno"];
+ reg -> sensor [label="5 V"];
+ src -> loads [label="12 V"];
+ src -> driver [label="se fonte compatível",style=dashed];
+ logic -> gnd [style=dotted,dir=none];
+ src -> gnd [style=dotted,dir=none];
+}

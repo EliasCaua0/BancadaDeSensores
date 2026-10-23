@@ -1,0 +1,13 @@
+digraph G {
+ graph [rankdir=LR, bgcolor="white", splines=ortho, nodesep=.43, ranksep=.7, pad=.15, fontname="DejaVu Sans"];
+ node [shape=box, style="rounded,filled", fontname="DejaVu Sans", fontsize=11, color="#5C6380", fillcolor="#F5F6FA", margin="0.16,0.11"];
+ edge [fontname="DejaVu Sans",fontsize=9,color="#69728C",arrowsize=.65];
+ phys [label="Grandezas físicas\nTemperatura | pressão | distância\ncorrente | vazão | sinais 4–20 mA"];
+ circuits [label="Interfaces na PCB\nBornes | shunts | resistores\nadaptação de níveis",fillcolor="#EEE8FA",color="#7955B5"];
+ esp [label="ESP32 DevKit\nGPIO | ADC1 | I²C | 1-Wire",fillcolor="#E0D3FC",color="#7135BB",penwidth=1.7];
+ out [label="Acionamento na PCB\n4 × BC337 + 1N4007\nSTEP / DIR",fillcolor="#EEE8FA",color="#7955B5"];
+ act [label="Cargas externas\nDriver de passo | NEMA 23\nBobinas | cargas DC"];
+ arcan [label="ArcanLab\nProtocolo | servidor\ntelemetria + comando remoto\n(INTEGRAÇÃO PREVISTA)",style="rounded,dashed",color="#8B76A7",fillcolor="white"];
+ phys -> circuits -> esp -> out -> act;
+ esp -> arcan [style=dashed, label="futuro", constraint=false];
+}

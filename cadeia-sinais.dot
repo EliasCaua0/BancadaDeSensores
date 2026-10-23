@@ -1,0 +1,19 @@
+digraph G {
+ graph [rankdir=LR, bgcolor="white",splines=polyline,nodesep=.38,ranksep=.64,pad=.14];
+ node [shape=box,style="rounded,filled",fontname="DejaVu Sans",fontsize=10,fillcolor="#F6F7FA",color="#5D6880",margin="0.13,0.1"];
+ edge [fontname="DejaVu Sans",fontsize=9,arrowsize=.65,color="#5C6884"];
+ a [label="Medição elétrica\n4–20 mA"];
+ b [label="Shunt 150 Ω\n0,6–3,0 V (ideal)\nlinear só até ~2,45 V (≈16 mA)"];
+ c [label="ADC1\nGPIO39 / GPIO36"];
+ d [label="ACS712\nefeito Hall; saída V"];
+ e [label="Atenuação R7/R8\nse ligação confirmada"];
+ f [label="ADC1 GPIO34"];
+ g [label="HC-SR04\necho TTL (5 V)"];
+ h [label="Adequação R11/R12\nverificar ligação"];
+ i [label="Entrada GPIO13"];
+ j [label="Temperatura/pressão\nBMP180"];
+ k [label="I²C: esquema SCL=21 / SDA=22\n(padrão do ESP32 é o inverso; revisar)"];
+ l [label="Temperatura\nDS18B20"];
+ m [label="1-Wire + pull-up\nGPIO4"];
+ a->b->c; d->e->f;g->h->i;j->k;l->m;
+}
